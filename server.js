@@ -5,7 +5,7 @@ const routes = require("./routes");
 const uri =
   "mongodb+srv://Pretteter:qQoSiZGnUSqThw6F@cluster0.mqyzw.mongodb.net/ToDO?retryWrites=true&w=majority";
 
-// Connect to MongoDB database
+// Connect to MongoDB databasee
 mongoose.connect(uri).then(() => {
   var cors = require("cors");
   const app = express();
