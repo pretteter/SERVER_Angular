@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 
 const uri =
-  "mongodb+srv://Pretteter:qQoSiZGnUSqThw6F@cluster0.mqyzw.mongodb.net/ToDO?retryWrites=true&w=majority";
+  "mongodb://mongodb+srv://Pretteter:qQoSiZGnUSqThw6F@cluster0.mqyzw.mongodb.net/ToDO?retryWrites=true&w=majority";
 
 // Connect to MongoDB databasee
 mongoose
