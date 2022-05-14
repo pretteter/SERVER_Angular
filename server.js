@@ -6,29 +6,34 @@ const uri =
   "mongodb+srv://Pretteter:qQoSiZGnUSqThw6F@cluster0.mqyzw.mongodb.net/ToDO?retryWrites=true&w=majority";
 
 // Connect to MongoDB databasee
-mongoose.connect(uri).then(() => {
-  var cors = require("cors");
-  const app = express();
-  app.use(express.json());
-  app.use(
-    cors({
-      origin: "*",
-    })
-  );
-  app.use("/api", routes);
+mongoose
+  .connect(uri)
+  .then(() => {
+    var cors = require("cors");
+    const app = express();
+    app.use(express.json());
+    app.use(
+      cors({
+        origin: "*",
+      })
+    );
+    app.use("/api", routes);
 
-  var db = mongoose.connection;
+    var db = mongoose.connection;
 
-  db.on("error", console.error.bind(console, "connection error:"));
+    db.on("error", console.error.bind(console, "connection error:"));
 
-  db.once("open", function () {
-    db.db.stats(function (err, stats) {
-      console.log(db.collections.todos.stats());
+    db.once("open", function () {
+      db.db.stats(function (err, stats) {
+        console.log(db.collections.todos.stats());
+      });
     });
-  });
 
-  const Port = process.env.PORT || 3000;
-  app.listen(Port, () => {
-    console.warn(`App listening on http://localhost:${Port}`);
+    const Port = process.env.PORT || 3000;
+    app.listen(Port, () => {
+      console.warn(`App listening on http://localhost:${Port}`);
+    });
+  })
+  .catch((err) => {
+    console.log("Error connecting with error code:", err);
   });
-});
