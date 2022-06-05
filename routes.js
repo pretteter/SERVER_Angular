@@ -83,3 +83,13 @@ router.get("/stats", async (req, res) => {
     res.send({ error: "collection doesnt exist" });
   }
 });
+
+router.get("/serverstats", async (req, res) => {
+  try {
+    const x = await Post.db.serverStatus({ repl: 0, metrics: 0, locks: 0 });
+    res.send(x);
+  } catch {
+    res.status(404);
+    res.send({ error: "collection doesnt exist" });
+  }
+});
