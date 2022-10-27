@@ -86,7 +86,8 @@ router.get("/stats", async (req, res) => {
 
 router.get("/serverstats", async (req, res) => {
   try {
-    const x = await Post.db.serverStatus({ repl: 0, metrics: 0, locks: 0 });
+    const x = await Post.db.collections.todos.stats();
+
     res.send(x);
   } catch {
     res.status(404);

@@ -39,11 +39,11 @@ mongoose
 
     db.on("error", console.error.bind(console, "connection error:"));
 
-    db.once("open", function () {
-      db.db.stats(function (err, stats) {
-        console.log(db.collections.todos.stats());
-      });
-    });
+    // db.once("open", function () {
+    //   db.db.stats(function (err, stats) {
+    //     console.log(db.collections.todos.stats());
+    //   });
+    // });
 
     const Port = process.env.PORT || 3000;
     app.listen(Port, () => {
